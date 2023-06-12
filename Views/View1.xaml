@@ -1,0 +1,421 @@
+﻿<UserControl x:Class="WpfApp1.Views.View1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Views"
+             xmlns:ViewModels="clr-namespace:WpfApp1.ViewModels"
+             mc:Ignorable="d" 
+             xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+             xmlns:dxwuin="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/navigation"
+            
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    
+    <Grid>
+        <TabControl >
+            <TabItem Header="See countries" x:Name="jhjkkj"  Height="40">
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox Grid.Column="0"
+                             ItemsSource="{Binding Yurts_db}"
+                             DisplayMemberPath="yurt_name"
+                             SelectedItem="{Binding selected_object, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <StackPanel Grid.Column="1">
+
+
+                        <Label Content="Name"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"
+                               />
+
+                        <Label Content="Formed year"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Main city"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Big cities"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Main system"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Squar"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Populatuion"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Currency"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Telephone"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Time"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBox Margin="10 15 10 0"
+                                 Height="25"
+                                 Text="{Binding selected_object.yurt_name , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"                    
+                                 />
+
+                        <TextBox Margin="10 15 10 0"
+                                 Height="25"
+                                 Text="{Binding selected_object.yurt_year , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="secondbox"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 Height="25"
+                                 Text="{Binding selected_object.yurt_main_city , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 
+                                 x:Name="thirdbox"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="forthbox"
+                                 Text="{Binding selected_object.yurt_big_cities , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 
+                                 Height="25"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="fifthbox"
+                                 Text="{Binding selected_object.yurt_main_system , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 
+                                 Height="25"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="sixthbox"
+                                 Text="{Binding selected_object.yurt_square , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 
+                                 Height="25"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="seventhbox"
+                                 Height="25"
+                                 Text="{Binding selected_object.yurt_population , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBox Margin="10 15 10 0"
+                                 Text="{Binding selected_object.yurt_currency , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 
+                                 x:Name="eighthbox"
+                                 Height="25"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 Text="{Binding selected_object.yurt_phone , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 
+                                 x:Name="ninthbox"
+                                 Height="25"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 Text="{Binding selected_object.yurt_time , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                                 
+                                 x:Name="tenthbox"
+                                 Height="25"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3"
+                   >
+
+                        <Button Height="40"
+                                Content="update"
+                                FontSize="20"
+                                Margin="10 80"
+                                Command="{Binding update}"/>
+
+                        <Button Height="40"
+                                Content="delete"
+                                FontSize="20"
+                                Margin="10 40 "
+                                Command="{Binding delete}"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="4">
+
+
+                        <Image Width="170" Height="100" 
+                               Margin="0 10 0 10"
+                               Source="{Binding selected_object.yurt_first_path }" />
+
+
+                        <Image Width="170" Height="100" 
+                                   Margin="0 10 0 10"
+                                   Source="{Binding selected_object.yurt_second_path}"/>
+
+
+                        <Image Width="170" Height="100" 
+                                   Margin="0 10 0 10"
+                                   Source="{Binding selected_object.yurt_third_path}"/>
+
+
+
+
+                    </StackPanel>
+
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Add countries"   Height="40" IsEnabled="{Binding enabled}">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackPanel Grid.Column="0" >
+
+                        <Label Content="Name"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Formed year"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Main city"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Big cities"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Main system"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Squar"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Populatuion"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Currency"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Telephone"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                        <Label Content="Time"
+                               FontSize="15"
+                               Margin="10 10 10 0 "
+                               Height="30"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBox Margin="10 15 10 0"
+                                 Height="25"
+                                 x:Name="firstbox2"
+                                 Text="{Binding selected_yurt.yurt_name}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 Height="25"
+                                 x:Name="secondbox2"
+                                 Text="{Binding selected_yurt.yurt_year}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 Height="25"
+                                 x:Name="thirdbox2"
+                                 Text="{Binding selected_yurt.yurt_main_city}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="forthbox2"
+                                 Height="25"
+                                 Text="{Binding selected_yurt.yurt_big_cities}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="fifthbox2"
+                                 Height="25"
+                                 Text="{Binding selected_yurt.yurt_main_system}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="sixthbox2"
+                                 Height="25"
+                                 Text="{Binding selected_yurt.yurt_square}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="seventhbox2"
+                                 Height="25"
+                                 Text="{Binding selected_yurt.yurt_population}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="eighthbox2"
+                                 Height="25"
+                                 Text="{Binding selected_yurt.yurt_currency}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="ninthbox2"
+                                 Height="25"
+                                 Text="{Binding selected_yurt.yurt_phone}"/>
+
+                        <TextBox Margin="10 15 10 0"
+                                 x:Name="tenthbox2"
+                                 Height="25"
+                                 Text="{Binding selected_yurt.yurt_time}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+
+
+                        <Image Width="170" Height="100" 
+                               Margin="0 10 0 10"
+                               Source="{Binding selected_yurt.yurt_first_path }" />
+                        <!--pic_path-->
+
+                        <Image Width="170" Height="100" 
+                                   Margin="0 10 0 10"
+                                   Source="{Binding selected_yurt.yurt_second_path}"/>
+                        <!--pic_path2-->
+
+                        <Image Width="170" Height="100" 
+                                   Margin="0 10 0 10"
+                                   Source="{Binding selected_yurt.yurt_third_path}"/>
+                        <!--pic_path3-->
+
+
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3">
+
+                        <Button Content="browse"
+                                FontSize="15"
+                                Margin="10 55 0 0 "
+                                Width="100"
+                                Command="{Binding browse_btn}"/>
+
+                        <Button Content="browse"
+                                FontSize="15"
+                                Margin="10 95 0 0 "
+                                Width="100"
+                                Command="{Binding browse_btn2}"/>
+
+
+                        <Button Content="browse"
+                                FontSize="15"
+                                Margin="10 95 0 0 "
+                                Width="100"
+                                Command="{Binding browse_btn3}"/>
+
+
+
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="4">
+
+
+
+
+                        <Button Content="→"
+                                FontSize="30"
+                                Padding="0"
+                                Command="{Binding right_cmd}"
+                                Width="50"/>
+
+                        <TextBox Margin="10"
+                                 Height="30"
+                                 Text="{Binding added_coun , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button Content="←"
+                                FontSize="30"
+                                Command="{Binding left_cmd}"
+                                Width="50"/>
+
+
+
+                        <Button Margin="40"
+                                Height="40"
+                                Content="Save"
+                                FontSize="20"
+                                Command="{Binding save_cmd}"/>
+
+
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem    Height="40">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <ComboBox   BorderBrush="White" 
+                                    ItemsSource="{Binding Path=DataContext.items_xpo, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                                    
+                                    SelectedItem="{Binding Path= DataContext.item_sel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Mode=TwoWay, NotifyOnSourceUpdated=True,  UpdateSourceTrigger=PropertyChanged}"  >
+                            <dxmvvm:Interaction.Behaviors>
+                                <dxmvvm:EventToCommand EventName="SelectionChanged" Command="{Binding Path= DataContext.Selection_changed_cmd, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
+
+                                </dxmvvm:EventToCommand>
+                            </dxmvvm:Interaction.Behaviors>
+                        </ComboBox>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+            </TabItem>
+
+
+            
+
+        </TabControl>
+
+       
+    </Grid>
+</UserControl>
